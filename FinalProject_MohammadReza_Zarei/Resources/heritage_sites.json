@@ -6,7 +6,7 @@
     "era": "Achaemenid Empire",
     "description": "Persepolis was the ceremonial capital of the Achaemenid Empire. The monumental staircases, reliefs, and columns reflect the power and artistry of ancient Persia.",
     "imageName": "persepolis",
-    "photoCount": 2,
+    "photoCount": 5,
     "isFavorite": false
   },
   {
@@ -16,7 +16,7 @@
     "era": "Achaemenid Empire",
     "description": "Pasargadae is the site of the tomb of Cyrus the Great and the remains of his capital city. It marks the birth of the Persian Empire and is a UNESCO World Heritage Site.",
     "imageName": "pasargadae",
-    "photoCount": 1,
+    "photoCount": 5,
     "isFavorite": false
   },
   {
@@ -26,7 +26,7 @@
     "era": "Achaemenid & Sassanian",
     "description": "Naqsh-e Rostam contains rock-cut tombs of Achaemenid kings and Sassanian reliefs that depict royal ceremonies, battles, and religious symbolism.",
     "imageName": "naqsh",
-    "photoCount": 3,
+    "photoCount": 5,
     "isFavorite": false
   }
 ]

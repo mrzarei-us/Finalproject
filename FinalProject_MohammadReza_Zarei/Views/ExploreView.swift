@@ -16,13 +16,14 @@ struct ExploreView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    ForEach(viewModel.sites) { site in
+                    // IMPORTANT: use sites directly, and give each one a stable id
+                    ForEach(viewModel.sites, id: \.id) { site in
                         NavigationLink {
                             SiteDetailView(site: site)
                         } label: {
                             SiteCard(site: site)
                         }
-                        .buttonStyle(.plain)
+                        .buttonStyle(.plain)   // keeps the card looking like a card
                     }
                 }
                 .padding()
@@ -31,8 +32,6 @@ struct ExploreView: View {
         }
     }
 }
-
-
 
 struct SiteCard: View {
     let site: HeritageSite
