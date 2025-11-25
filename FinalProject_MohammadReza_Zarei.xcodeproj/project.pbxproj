@@ -31,10 +31,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1975C3972ED57FB800A57B19 /* Exceptions for "FinalProject_MohammadReza_Zarei" folder in "FinalProject_MohammadReza_Zarei" target */ = {
+		19D1AA202ED60C5300EA31A8 /* Exceptions for "FinalProject_MohammadReza_Zarei" folder in "FinalProject_MohammadReza_Zarei" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Media/Finalproject.mov,
+				Media/FinalProject.mov,
 			);
 			target = 1978BA472ED4F03C00064BCF /* FinalProject_MohammadReza_Zarei */;
 		};
@@ -44,7 +44,7 @@
 		1978BA4A2ED4F03C00064BCF /* FinalProject_MohammadReza_Zarei */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1975C3972ED57FB800A57B19 /* Exceptions for "FinalProject_MohammadReza_Zarei" folder in "FinalProject_MohammadReza_Zarei" target */,
+				19D1AA202ED60C5300EA31A8 /* Exceptions for "FinalProject_MohammadReza_Zarei" folder in "FinalProject_MohammadReza_Zarei" target */,
 			);
 			path = FinalProject_MohammadReza_Zarei;
 			sourceTree = "<group>";
