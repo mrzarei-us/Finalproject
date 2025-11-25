@@ -75,6 +75,10 @@ The gallery in `SiteDetailView` behaves as:
 
   - `imageName_1`
   - `imageName_2`
+    `imageName_3`
+  - `imageName_4`
+  - `imageName_5`
+
   - ...
   - `imageName_photoCount`
 
@@ -83,7 +87,7 @@ Example – Persepolis:
 ```json
 {
   "imageName": "persepolis",
-  "photoCount": 2
+  "photoCount": 5
 }
 ```
 
@@ -92,6 +96,10 @@ The app will look for:
 - `persepolis`   (main)
 - `persepolis_1`
 - `persepolis_2`
+- `persepolis_3`
+- `persepolis_4`
+- `persepolis_5`
+
 
 
 ---
