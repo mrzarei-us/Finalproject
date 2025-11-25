@@ -1,3 +1,12 @@
+//
+//  TimelineView.swift
+//  FinalProject_MohammadReza_Zarei
+//
+//  Created by Mohammad Reza Zarei on 11/24/2025.
+//  Description: CIS 137 final project – Persian Heritage Explorer app using SwiftUI and MVVM.
+//  Note: Data is stored in a JSON file and this project is prepared for future SwiftData (Week 16 database) integration.
+//
+
 import SwiftUI
 
 struct TimelineView: View {
@@ -5,46 +14,65 @@ struct TimelineView: View {
         let id = UUID()
         let name: String
         let years: String
+        let description: String
         let color: Color
+        let imageName: String   // image used in the timeline row
     }
 
     let periods: [Period] = [
-        .init(name: "Achaemenid Empire", years: "550–330 BC", color: .blue),
-        .init(name: "Parthian Empire", years: "247 BC – 224 AD", color: .green),
-        .init(name: "Sassanian Empire", years: "224–651 AD", color: .purple)
+        .init(
+            name: "Achaemenid Empire",
+            years: "550–330 BC",
+            description: "Important developments in Persian history during this era.",
+            color: .blue,
+            imageName: "achaemenid"
+        ),
+        .init(
+            name: "Parthian Empire",
+            years: "247 BC – 224 AD",
+            description: "Important developments in Persian history during this era.",
+            color: .green,
+            imageName: "parthian"
+        ),
+        .init(
+            name: "Sassanian Empire",
+            years: "224–651 AD",
+            description: "Important developments in Persian history during this era.",
+            color: .purple,
+            imageName: "sassanian"
+        )
     ]
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 32) {
-                    ForEach(Array(periods.enumerated()), id: \.element.id) { index, period in
+                VStack(alignment: .leading, spacing: 24) {
+                    ForEach(periods) { period in
                         HStack(alignment: .top, spacing: 16) {
-                            VStack {
-                                Circle()
-                                    .fill(period.color)
-                                    .frame(width: 20, height: 20)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(Color.primary.opacity(0.2), lineWidth: 1)
-                                    )
-                                    .scaleEffect(1.0 + (index == 0 ? 0.1 : 0.0))
-                                    .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true),
-                                               value: index)
 
-                                Rectangle()
-                                    .fill(Color.secondary.opacity(0.3))
-                                    .frame(width: 3, height: 80)
-                            }
+                            // Image for the period
+                            Image(period.imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(radius: 3)
 
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(period.name)
-                                    .font(.title3.bold())
+                                HStack {
+                                    Circle()
+                                        .fill(period.color)
+                                        .frame(width: 10, height: 10)
+                                    Text(period.name)
+                                        .font(.headline)
+                                }
+
                                 Text(period.years)
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
-                                Text("Important developments in Persian history during this era.")
-                                    .font(.footnote)
+
+                                Text(period.description)
+                                    .font(.caption)
                                     .foregroundColor(.secondary)
                             }
                         }

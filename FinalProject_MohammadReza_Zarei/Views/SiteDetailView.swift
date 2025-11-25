@@ -1,12 +1,21 @@
+//
+//  SiteDetailView.swift
+//  FinalProject_MohammadReza_Zarei
+//
+//  Created by Mohammad Reza Zarei on 11/24/2025.
+//  Description: CIS 137 final project – Persian Heritage Explorer app using SwiftUI and MVVM.
+//  Note: Data is stored in a JSON file and this project is prepared for future SwiftData (Week 16 database) integration.
+//
+
 import SwiftUI
 
 struct SiteDetailView: View {
     @EnvironmentObject var viewModel: HeritageViewModel
     let site: HeritageSite
 
-    /// Builds the gallery image name for a given index.
-    /// index == 0  → main imageName
-    /// index >= 1 → imageName_index  (e.g. persepolis_1, persepolis_2, ...)
+    // Zoom state for the detail image
+    @State private var imageScale: CGFloat = 1.0
+
     private func galleryImageName(for index: Int) -> String {
         if index == 0 {
             return site.imageName
@@ -16,7 +25,6 @@ struct SiteDetailView: View {
     }
 
     var totalPhotos: Int {
-        // main image + additional ones
         1 + max(0, site.photoCount)
     }
 
@@ -24,7 +32,7 @@ struct SiteDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
 
-                // MARK: - Image gallery
+                // MARK: - Gallery with Zoom
                 TabView {
                     ForEach(0 ..< totalPhotos, id: \.self) { index in
                         Image(galleryImageName(for: index))
@@ -39,7 +47,19 @@ struct SiteDetailView: View {
                 }
                 .frame(height: 280)
                 .tabViewStyle(.page(indexDisplayMode: .automatic))
+                .scaleEffect(imageScale)
+                .onTapGesture(count: 2) {
+                    withAnimation(.spring()) {
+                        imageScale = (imageScale == 1.0 ? 2.0 : 1.0)
+                    }
+                }
+                .onLongPressGesture {
+                    withAnimation(.spring()) {
+                        imageScale = 1.0
+                    }
+                }
 
+                // MARK: - Info Section
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(site.name)
@@ -54,7 +74,9 @@ struct SiteDetailView: View {
                             .font(.footnote)
                             .foregroundColor(.secondary)
                     }
+
                     Spacer()
+
                     Button {
                         viewModel.toggleFavorite(site: site)
                     } label: {
@@ -69,9 +91,9 @@ struct SiteDetailView: View {
                 }
                 .padding(.horizontal)
 
-                Divider()
-                    .padding(.horizontal)
+                Divider().padding(.horizontal)
 
+                // MARK: - Description
                 Text("Description")
                     .font(.title2.bold())
                     .padding(.horizontal)
@@ -92,8 +114,6 @@ struct SiteDetailView: View {
         if let site = HeritageViewModel().sites.first {
             SiteDetailView(site: site)
                 .environmentObject(HeritageViewModel())
-        } else {
-            Text("No data")
         }
     }
 }

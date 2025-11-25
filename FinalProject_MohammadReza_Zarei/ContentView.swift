@@ -2,23 +2,41 @@
 //  ContentView.swift
 //  FinalProject_MohammadReza_Zarei
 //
-//  Created by Mohammadreza Zarei on 11/24/25.
+//  Created by Mohammad Reza Zarei on 11/24/2025.
+//  Description: CIS 137 final project – Persian Heritage Explorer app using SwiftUI and MVVM.
+//  Note: Data is stored in a JSON file and this project is prepared for future SwiftData (Week 16 database) integration.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = HeritageViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            ExploreView()
+                .tabItem {
+                    Image(systemName: "globe")
+                    Text("Explore")
+                }
+            
+            TimelineView()
+                .tabItem {
+                    Image(systemName: "clock")
+                    Text("Timeline")
+                }
+            
+            FavoritesView()
+                .tabItem {
+                    Image(systemName: "heart")
+                    Text("Favorites")
+                }
         }
-        .padding()
+        .environmentObject(viewModel)
     }
 }
 
 #Preview {
     ContentView()
 }
+

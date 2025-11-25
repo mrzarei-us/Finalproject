@@ -27,11 +27,25 @@
 		1978BA482ED4F03C00064BCF /* FinalProject_MohammadReza_Zarei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject_MohammadReza_Zarei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1978BA582ED4F03E00064BCF /* FinalProject_MohammadReza_ZareiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProject_MohammadReza_ZareiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1978BA622ED4F03E00064BCF /* FinalProject_MohammadReza_ZareiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProject_MohammadReza_ZareiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1978BA7A2ED4F44B00064BCF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1975C3972ED57FB800A57B19 /* Exceptions for "FinalProject_MohammadReza_Zarei" folder in "FinalProject_MohammadReza_Zarei" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Media/Finalproject.mov,
+			);
+			target = 1978BA472ED4F03C00064BCF /* FinalProject_MohammadReza_Zarei */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1978BA4A2ED4F03C00064BCF /* FinalProject_MohammadReza_Zarei */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1975C3972ED57FB800A57B19 /* Exceptions for "FinalProject_MohammadReza_Zarei" folder in "FinalProject_MohammadReza_Zarei" target */,
+			);
 			path = FinalProject_MohammadReza_Zarei;
 			sourceTree = "<group>";
 		};
@@ -75,6 +89,7 @@
 		1978BA3F2ED4F03C00064BCF = {
 			isa = PBXGroup;
 			children = (
+				1978BA7A2ED4F44B00064BCF /* README.md */,
 				1978BA4A2ED4F03C00064BCF /* FinalProject_MohammadReza_Zarei */,
 				1978BA5B2ED4F03E00064BCF /* FinalProject_MohammadReza_ZareiTests */,
 				1978BA652ED4F03E00064BCF /* FinalProject_MohammadReza_ZareiUITests */,

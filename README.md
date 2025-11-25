@@ -1,43 +1,84 @@
 # PersianHeritageExplorer – Final Project (CIS 137)
+Author: **Mohammad Reza Zarei**  
+Date: **11/24/2025**
 
-This project implements the **Persian Heritage Explorer** app using **SwiftUI** and **MVVM**.
+This project implements the **Persian Heritage Explorer** app using **SwiftUI** and the **MVVM** architecture.  
+The app lets the user explore key Iranian heritage sites, view a historical timeline, and mark favorite locations.
 
-## Teacher Comment
+---
 
-> Store the description and history information in a JSON file.
-> If you want this information to be editable, you may want to use a database (SwiftData).
+## How the project satisfies the assignment
 
-### How this project follows the comment
+- Uses **MVVM**:
+  - `HeritageSite` in **Model**
+  - `HeritageViewModel` in **ViewModel**
+  - SwiftUI screens (`ExploreView`, `SiteDetailView`, `TimelineView`, `FavoritesView`) in **Views**
+- Implements **navigation** with a `TabView` (Explore / Timeline / Favorites) and `NavigationStack` for detail screens.
+- Stores the descriptive and history information in a **JSON file** (`Resources/heritage_sites.json`), as requested in the instructor's comment.
+- Supports **persistent state**:
+  - Favorite sites are stored in `UserDefaults` so they remain selected between app launches.
+- Includes an **app icon** created by the student and wired to the `AppIcon` asset catalog.
 
-- All site information (name, location, era, description, **image name, and number of photos**) is stored in:
-  - `Resources/heritage_sites.json`
-- The `HeritageViewModel` loads data from this JSON file using `JSONDecoder`.
-- Favorites are persisted using `UserDefaults` (simple storage).
-- A future version can easily migrate to **SwiftData** by:
-  - Creating a SwiftData `@Model` type that mirrors `HeritageSite`
-  - Importing the JSON only once into the SwiftData store
-  - Replacing the in-memory array with a SwiftData `@Query`.
+---
+
+## Week 16 – Database / SwiftData Connection
+
+The project currently stores data in a JSON file plus `UserDefaults`, but it is designed so it can be migrated to **SwiftData** (Week 16 topic):
+
+- The `HeritageSite` struct can be turned into a `@Model` type.
+- On first launch, the app could read `heritage_sites.json` and insert all items into a SwiftData store.
+- After migration, `HeritageViewModel` would use a SwiftData `@Query` to read and update sites.
+- Favorites would then be stored directly in the database instead of `UserDefaults`.
+
+This design shows an understanding of how to move from simple file-based storage to a real database layer.
+
+---
+
+## Timeline images
+
+The **Timeline** tab shows three major periods:
+
+- Achaemenid Empire  
+- Parthian Empire  
+- Sassanian Empire  
+
+Each period has:
+
+- A small image on the left
+- A colored circle
+- A title and years
+- A short description
+
+The image assets expected in **Assets.xcassets** are:
+
+- `achaemenid`
+- `parthian`
+- `sassanian`
+
+
+
+---
 
 ## Image gallery and `photoCount`
 
 For each site in `heritage_sites.json`:
 
 - `imageName` is the **main image** used:
-  - In the Explore cards
+  - In the Explore card
   - As the first image in the gallery on the detail screen
-- `photoCount` is the **number of additional photos** besides the main image.
+- `photoCount` is the **number of additional photos** besides the main one.
 
-The gallery in `SiteDetailView` works like this:
+The gallery in `SiteDetailView` behaves as:
 
-- It always shows at least the main image.
-- If `photoCount > 0`, it also tries to load:
+- Always shows at least the main image.
+- If `photoCount > 0`, also tries to load:
 
   - `imageName_1`
   - `imageName_2`
   - ...
   - `imageName_photoCount`
 
-For example, for Persepolis:
+Example – Persepolis:
 
 ```json
 {
@@ -48,26 +89,32 @@ For example, for Persepolis:
 
 The app will look for:
 
-- `persepolis`   (main image)
-- `persepolis_1` (extra)
-- `persepolis_2` (extra)
+- `persepolis`   (main)
+- `persepolis_1`
+- `persepolis_2`
 
-Just drag your images into **Assets.xcassets** with these exact names.
 
-## Files
+---
 
-- `PersianHeritageExplorerApp.swift` – App entry
-- `ContentView.swift` – TabView with three main tabs
-- `Model/HeritageSite.swift` – Model struct (includes `photoCount`)
-- `ViewModel/HeritageViewModel.swift` – Loads JSON + handles favorites
-- `Views/ExploreView.swift` – List of sites
-- `Views/SiteDetailView.swift` – Detail view with:
-  - Image gallery using `TabView` and `tabViewStyle(.page)`
-  - Favorite button with animation
+## Files (main ones)
+
+- `FinalProject_MohammadReza_ZareiApp.swift` – App entry point
+- `ContentView.swift` – Hosts the main `TabView`
+- `Model/HeritageSite.swift` – Data model for one heritage site
+- `ViewModel/HeritageViewModel.swift` – Loads JSON, exposes data, and handles favorites
+- `Views/ExploreView.swift` – Explore tab listing heritage sites
+- `Views/SiteDetailView.swift` – Detail screen with a photo gallery and description
+- `Views/TimelineView.swift` – Timeline tab with images and colored markers
 - `Views/FavoritesView.swift` – Favorites tab
-- `Views/TimelineView.swift` – Simple animated historical timeline
-- `Resources/heritage_sites.json` – Main data source for the app
+- `Resources/heritage_sites.json` – JSON data file for the sites
+- `Assets.xcassets/AppIcon.appiconset` – App icon for the project
 
-## App Icon
+---
 
-Create an app icon in Figma following the instructor's video and add it to the Xcode asset catalog (`Assets.xcassets/AppIcon.appiconset`).
+## How to run
+
+
+ . Use the tabs at the bottom to explore the app:
+   - *Explore* → list of heritage sites, tap to see details.
+   - *Timeline* → historical periods with images.
+   - *Favorites* → sites you have marked with the heart button.
